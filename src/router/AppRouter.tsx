@@ -8,10 +8,10 @@ import Login from "../pages/Login.tsx";
 // 매개변수 자리에 onClick이 들어옴 => 타입 명시
 // () => void : VoidFunction
 
-export const AppRouter = (onClick: VoidFunction) => {
+export const AppRouter = () => {
     const routes: RouteObject[] = [
         {
-            element: <MainLayout onClick={onClick}/>,
+            element: <MainLayout />,
             path: "/",
             children: [
                 { index: true,  element: <Home /> },

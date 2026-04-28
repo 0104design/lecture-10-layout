@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/theme/ThemeContext.tsx";
 
 const Head = styled.header`
     height: 64px;
@@ -31,7 +33,10 @@ const NavRight = styled.div`
     align-items: center;
 `;
 
-function Header({ onClick }: { onClick: VoidFunction }) {
+function Header() {
+    const context = useContext(ThemeContext);
+    //  throw new Error => 에러를 발생시키는 명령 이 아래로 진행 불가.
+    if (!context) throw new Error("Provider 안에서 사용해주세요!");
 
     return (
         <Head>
@@ -44,9 +49,7 @@ function Header({ onClick }: { onClick: VoidFunction }) {
             </NavLeft>
             <NavRight>
                 <Link to={"/auth/login"}>로그인</Link>
-                <button onClick={onClick}>
-                    테마토글
-                </button>
+                <button onClick={context.toggleTheme}>테마토글</button>
             </NavRight>
         </Head>
     );
