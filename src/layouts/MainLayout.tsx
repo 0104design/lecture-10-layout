@@ -4,19 +4,22 @@ import styled from "styled-components";
 import Footer from "../components/Footer.tsx";
 
 const Wrap = styled.div`
-     display: flex;
-     flex-direction: column;
-     min-height: 100dvh;
- `;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: ${props => props.theme.color.background};
+    color: ${props => props.theme.color.text};
+`;
 
 const Main = styled.main`
     flex: 1;
-`
+`;
 
-function MainLayout() {
+// 메인 레이아웃은 컴포넌트 : 프롭스로 전달받아야 함.
+function MainLayout({ onClick }: { onClick: VoidFunction }) {
     return (
         <Wrap>
-            <Header />
+            <Header onClick={onClick} />
             <Main>
                 <Outlet />
             </Main>
@@ -25,4 +28,4 @@ function MainLayout() {
     );
 }
 
-export default MainLayout
+export default MainLayout;

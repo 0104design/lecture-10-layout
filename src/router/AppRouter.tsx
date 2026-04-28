@@ -4,10 +4,14 @@ import Home from "../pages/Home.tsx";
 import About from "../pages/About.tsx";
 import Login from "../pages/Login.tsx";
 
-export const AppRouter = () => {
+// AppRouter는 컴포넌트가 아닌 함수임.
+// 매개변수 자리에 onClick이 들어옴 => 타입 명시
+// () => void : VoidFunction
+
+export const AppRouter = (onClick: VoidFunction) => {
     const routes: RouteObject[] = [
         {
-            element: <MainLayout />,
+            element: <MainLayout onClick={onClick}/>,
             path: "/",
             children: [
                 { index: true,  element: <Home /> },
